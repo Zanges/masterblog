@@ -17,6 +17,8 @@ class JsonProvider(IDataProvider):
 
     def get_data(self: "JsonProvider") -> list[dict]:
         """Get all data from the json file"""
+        if not os.path.exists(self._file_path):
+            return []
         with open(self._file_path, "r") as file:
             content = file.read()
         return json.loads(content)
@@ -93,7 +95,7 @@ class JsonProvider(IDataProvider):
 
 
 def main():
-    provider = JsonProvider("../data.json")
+    provider = JsonProvider("../data2.json")
     data = provider.get_data()
     print(data)
 
