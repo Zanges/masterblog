@@ -77,6 +77,20 @@ class JsonProvider(IDataProvider):
         all_data = [item for item in all_data if item["id"] != post_id]
         self._save_data(all_data)
 
+    def get_first_free_id(self: "JsonProvider") -> int:
+        """
+        Get the first free id
+
+        :return: first free id
+        """
+        data = self.get_data()
+        ids = [item["id"] for item in data]
+        i = 0
+        while True:
+            if i not in ids:
+                return i
+            i += 1
+
 
 def main():
     provider = JsonProvider("../data.json")
