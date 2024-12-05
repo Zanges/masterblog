@@ -1,7 +1,7 @@
 import json
 import os
 
-from idataprovider import IDataProvider
+from dataprovider.idataprovider import IDataProvider
 
 
 class JsonProvider(IDataProvider):
