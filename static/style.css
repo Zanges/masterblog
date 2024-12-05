@@ -25,3 +25,36 @@ h1 {
 .post p {
     margin: 10px 0;
 }
+
+.post .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 8px;
+    a {
+        text-align: center;
+        text-decoration: none;
+        background-color: #4F4F4F;
+        color: #FFF;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+}
+
+.post .likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    gap: 4px;
+    a {
+        background-color: #4F4F4F;
+        color: #FFF;
+        padding: 4px 8px;
+        width: 100%;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+    }
+}
