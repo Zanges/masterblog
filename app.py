@@ -57,5 +57,29 @@ def update(post_id: int):
     return render_template("update.html", post=post)
 
 
+@app.route("/like/<int:post_id>")
+def like(post_id: int):
+    post = provider.get_data_by_id(post_id)
+    if post is None:
+        # Post not found
+        return "Post not found", 404
+
+    post["likes"] = post.get("likes", 0) + 1
+    provider.update_data(post_id, post)
+    return redirect(url_for("index"))
+
+
+@app.route("/dislike/<int:post_id>")
+def dislike(post_id: int):
+    post = provider.get_data_by_id(post_id)
+    if post is None:
+        # Post not found
+        return "Post not found", 404
+
+    post["likes"] = post.get("likes", 0) - 1
+    provider.update_data(post_id, post)
+    return redirect(url_for("index"))
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
