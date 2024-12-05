@@ -29,5 +29,11 @@ def add():
     return render_template('add.html')
 
 
+@app.route('/delete/<int:post_id>')
+def delete(post_id: int):
+    provider.delete_data(post_id)
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
